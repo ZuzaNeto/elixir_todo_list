@@ -1,0 +1,14 @@
+/_build
+/deps
+/priv/static/assets
+/node_modules
+/assets/node_modules
+*.log
+/config/dev.secret.exs
+.DS_Store
+.vscode/
+
+# --- Banco de Dados (SQLite, usado a partir da Fase 3) ---
+*.db
+*.db-shm
+*.db-wal
