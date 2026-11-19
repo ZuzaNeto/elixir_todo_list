@@ -27,6 +27,20 @@ defmodule ElixirTodoListWeb.TodoLive do
         Minha Lista de Tarefas
       </h1>
       
+      <form phx-submit="save_task" phx-change="update_form" class="flex gap-2 mb-6">
+        <input
+          type="text"
+          name="title"
+          value={@new_task_title}
+          placeholder="O que precisa ser feito?"
+          class="flex-grow p-2 border rounded"
+          autofocus
+        />
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+          Adicionar
+        </button>
+      </form>
+      
       <div class="mt-8">
         <ul id="task-list">
           <li :for={task <- @tasks} class="flex justify-between items-center p-3 border-b">
