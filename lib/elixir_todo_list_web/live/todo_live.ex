@@ -53,4 +53,10 @@ defmodule ElixirTodoListWeb.TodoLive do
     </div>
     """
   end
+
+  @impl true
+  def handle_event("update_form", %{"title" => new_title}, socket) do
+    socket = assign(socket, new_task_title: new_title)
+    {:noreply, socket}
+  end
 end
