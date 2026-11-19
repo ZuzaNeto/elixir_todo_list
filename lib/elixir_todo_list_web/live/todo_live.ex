@@ -55,8 +55,22 @@ defmodule ElixirTodoListWeb.TodoLive do
   end
 
   @impl true
-  def handle_event("update_form", %{"title" => new_title}, socket) do
-    socket = assign(socket, new_task_title: new_title)
-    {:noreply, socket}
+  def handle_event("save_task", %{"title" => title}, socket) do
+    if String.trim(title) != "" do
+      new_task = %{
+        id: System.unique_integer([:positive]),
+        title: title,
+        completed: false
+      }
+
+      socket =
+        socket
+        |> update(:tasks, fn tasks -> tasks ++ [new_task] end)
+        |> assign(:new_task_title, "")
+
+      {:noreply, socket}
+    else
+      {:noreply, socket}
+    end
   end
 end
